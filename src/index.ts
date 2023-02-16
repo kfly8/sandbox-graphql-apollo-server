@@ -45,7 +45,7 @@ const resolvers = {
   Query: {
     entries: async () => {
 
-      const queryStatement = db.prepare('SELECT id, title, body FROM entry');
+      const queryStatement = db.prepare(`SELECT id, title FROM entry LIMIT ${process.env.LIMIT}`);
       const entries = (
         await util.promisify(
                 queryStatement
